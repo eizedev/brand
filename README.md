@@ -52,3 +52,7 @@ Copy the generated files the project needs into that project's repository (for e
 Create `<project>/build.py` next to the existing ones, import the shared parts from
 `lib/brand.py`, write the output into the project folder and add a row to the table above. Icons
 that are shown small get a simplified variant from 32 px down, as `aiosynologysrm` does.
+
+## License
+
+Scripts are MIT, the ❯e_ logo is all rights reserved, project images are CC BY 4.0. Details: [LICENSE.md](LICENSE.md).
