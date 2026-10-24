@@ -4,7 +4,7 @@ Different parts of this repository are licensed differently.
 
 | Path | License |
 | --- | --- |
-| `lib/`, every `build.py` | MIT, see below |
+| `lib/`, every `build.py`, `docs-site/` (design, action, example) | MIT, see below |
 | `eizedev/` (the ❯e_ logo and everything generated from it) | All rights reserved |
 | Project folders such as `aiosynologysrm/` | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | `fonts/` | DejaVu fonts license, see [`fonts/LICENSE-DejaVu.txt`](fonts/LICENSE-DejaVu.txt) |
