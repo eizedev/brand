@@ -13,6 +13,7 @@ and the image is rebuilt, never edited by hand.
 | [`eizedev/`](eizedev/) | the personal ❯e_ logo: avatar, icons, marks, wordmarks, social preview, favicons |
 | [`aiosynologysrm/`](aiosynologysrm/) | icon, README header and social preview of [aiosynologysrm](https://github.com/eizedev/aiosynologysrm) |
 | [`ha-synology-srm-router/`](ha-synology-srm-router/) | Home Assistant icon, README header and social preview of [ha-synology-srm-router](https://github.com/eizedev/ha-synology-srm-router); same mark as aiosynologysrm |
+| [`docs-site/`](docs-site/) | design and build of the documentation websites (GitHub Action) |
 | [`lib/brand.py`](lib/brand.py) | shared palette, font outlines, SVG and PNG output |
 | [`fonts/`](fonts/) | DejaVu Sans Mono Bold with its license |
 
@@ -42,6 +43,34 @@ Debian/Ubuntu: `apt install librsvg2-bin`). The scripts declare their own Python
 uv run eizedev/build.py
 uv run aiosynologysrm/build.py
 uv run ha-synology-srm-router/build.py
+```
+
+## Documentation websites
+
+Every project's documentation site is built with [Zensical](https://zensical.org/) and the design in
+[`docs-site/site.css`](docs-site/site.css): the icon's colours (router blue, access point green, mesh
+yellow) on cards and headings, a hero on the start page, plain tables with visible code. The
+action in [`docs-site/`](docs-site/action.yml) adds the design and builds the site strictly into
+`site/`; the Zensical version is pinned in [`docs-site/requirements.txt`](docs-site/requirements.txt).
+Dependabot keeps both current here, and in each project the action reference, so a change to the
+design reaches a project as a Dependabot pull request after a new tag here.
+
+A project needs:
+
+- `zensical.toml`, starting from [`docs-site/example/zensical.toml`](docs-site/example/zensical.toml)
+  (`extra_css = ["assets/site.css"]`, `font = false`, the two palettes);
+- its pages in `docs/`, the icon as `docs/assets/icon.svg` (the hero shows it);
+  `docs/assets/site.css` in `.gitignore`, the action copies it in;
+- a workflow that checks out the project, runs `eizedev/brand/docs-site@<sha> # vX.Y.Z`, uploads
+  `site/` with `actions/upload-pages-artifact` and deploys it with `actions/deploy-pages`;
+- the start page markup from [`docs-site/example/docs/index.md`](docs-site/example/docs/index.md)
+  (`hero`, `cards`).
+
+Local preview, from the project's root:
+
+```sh
+curl -fsSo docs/assets/site.css https://raw.githubusercontent.com/eizedev/brand/main/docs-site/site.css
+uvx zensical@<version from docs-site/requirements.txt> serve
 ```
 
 ## Using the images in a project

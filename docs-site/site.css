@@ -1,0 +1,64 @@
+/* Site design shared by eizedev's documentation sites (source: eizedev/brand).
+   The colours of the icon carry through: router blue, access point green, mesh yellow. Bold sans
+   headings, soft surfaces, colour-coded sections and cards; tables and code stay plain and legible. */
+:root {
+  --md-text-font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --md-code-font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+[data-md-color-scheme="default"] {
+  --blue: #2f6fdb; --green: #3f9142; --yellow: #b37a00;
+  --md-default-bg-color: #ffffff; --md-default-fg-color: #141a26; --md-default-fg-color--light: #5a6475;
+  --md-primary-fg-color: #141a26; --md-primary-bg-color: #ffffff;
+  --md-typeset-a-color: var(--blue); --md-accent-fg-color: var(--green); --md-code-bg-color: #f2f5fa;
+  --surface: #f2f5fa;
+}
+[data-md-color-scheme="slate"] {
+  --blue: #61afef; --green: #98c379; --yellow: #e5c07b;
+  --md-default-bg-color: #12161f; --md-default-fg-color: #e6e9ef; --md-default-fg-color--light: #9aa3b2;
+  --md-primary-fg-color: #0c0f15; --md-primary-bg-color: #e6e9ef;
+  --md-typeset-a-color: var(--blue); --md-accent-fg-color: var(--green); --md-code-bg-color: #1a2030;
+  --surface: #1a2030;
+}
+.md-header { background: var(--md-primary-fg-color); color: var(--md-primary-bg-color); }
+.md-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue) 0 50%, var(--green) 50% 80%, var(--yellow) 80%); }
+.md-typeset h1, .md-typeset h2, .md-typeset h3 { font-weight: 800; letter-spacing: -0.03em; color: var(--md-default-fg-color); }
+.md-typeset h1 { font-size: 2.4rem; }
+.md-typeset h2 { font-size: 1.35rem; display: flex; align-items: center; gap: .55rem; margin-top: 2.2em; }
+.md-typeset h2::before { content: ""; width: .7rem; height: .7rem; border-radius: 50%; background: var(--blue); flex: none; }
+.md-typeset h2:nth-of-type(3n+2)::before { background: var(--green); }
+.md-typeset h2:nth-of-type(3n)::before { background: var(--yellow); }
+.md-nav__link--active { color: var(--blue) !important; font-weight: 700; }
+/* reading area: a framed table with a tinted, monospace head and visible code */
+.md-typeset table:not([class]) { border-radius: 10px; font-size: .72rem; box-shadow: none;
+  border: 1px solid color-mix(in srgb, var(--md-default-fg-color) 14%, transparent); }
+.md-typeset table:not([class]) th { font-family: var(--md-code-font-family); font-weight: 700; background: var(--md-code-bg-color); }
+.md-typeset table:not([class]) td { border-top-color: color-mix(in srgb, var(--md-default-fg-color) 10%, transparent); }
+.md-typeset code { border-radius: 4px; }
+[data-md-color-scheme="default"] .md-typeset code { background: #e8edf5; }
+[data-md-color-scheme="slate"] .md-typeset code { background: #232b3d; }
+/* names in tables stay in one piece; a table wider than the page scrolls instead */
+.md-typeset td code { white-space: nowrap; }
+.md-grid { max-width: 76rem; }
+.md-typeset pre > code { border-radius: 10px; }
+.cards ul { list-style: none; margin: 0 !important; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: .9rem; }
+.cards li { margin: 0 !important; padding: 1.1rem 1.2rem 1.2rem; border-radius: 14px; background: var(--surface); position: relative; font-size: .74rem; color: var(--md-default-fg-color--light); }
+.cards li::before { content: ""; display: block; width: 1.4rem; height: 1.4rem; border-radius: 50%; margin-bottom: .7rem; background: var(--blue); }
+.cards li:nth-child(3n+2)::before { background: var(--green); }
+.cards li:nth-child(3n)::before { background: var(--yellow); }
+.cards li a { font-size: .9rem; color: var(--md-default-fg-color) !important; }
+.md-search__button, .md-search__form { background: rgba(255,255,255,.1) !important; color: var(--md-primary-bg-color) !important; }
+.md-header .md-search__button * { color: var(--md-primary-bg-color) !important; }
+.md-nav__link--active, .md-nav__item .md-nav__link--active { background: color-mix(in srgb, var(--blue) 12%, transparent) !important; border-radius: 8px; }
+.md-typeset .md-button { border-radius: 999px; border: 0; background: var(--surface); color: var(--md-default-fg-color); font-weight: 700; padding: .55em 1.4em; }
+.md-typeset .md-button--primary { background: var(--blue); color: #fff !important; }
+/* hero: the network mark, large and centred */
+.hero { text-align: center; padding: 2rem 1rem 2.6rem; margin-bottom: 1.5rem; }
+.hero::before { content: ""; display: block; width: 8.5rem; height: 8.5rem; margin: 0 auto 1.2rem; background: url("icon.svg") center / contain no-repeat; }
+.hero .hero-kicker { display: inline-block; font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--green); background: color-mix(in srgb, var(--green) 14%, transparent); padding: .2rem .7rem; border-radius: 999px; margin: 0; }
+.md-typeset .hero h1 { font-size: 3.4rem; margin: .7rem 0 .6rem; }
+.hero .hero-lead { font-size: 1.05rem; max-width: 38rem; margin: 0 auto 1rem; color: var(--md-default-fg-color--light); }
+.md-typeset .hero .hero-install code { background: var(--surface); padding: .45rem .9rem; border-radius: 8px; font-size: .78rem; }
+.md-typeset .cards > ul { display: grid !important; }
+.md-typeset .cards a { text-decoration: none; }

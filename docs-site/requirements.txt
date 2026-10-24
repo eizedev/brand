@@ -1,0 +1,2 @@
+# The Zensical version every site is built with; Dependabot proposes updates.
+zensical==0.0.72
