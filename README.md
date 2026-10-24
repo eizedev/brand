@@ -12,6 +12,7 @@ and the image is rebuilt, never edited by hand.
 | --- | --- |
 | [`eizedev/`](eizedev/) | the personal ❯e_ logo: avatar, icons, marks, wordmarks, social preview, favicons |
 | [`aiosynologysrm/`](aiosynologysrm/) | icon, README header and social preview of [aiosynologysrm](https://github.com/eizedev/aiosynologysrm) |
+| [`ha-synology-srm-router/`](ha-synology-srm-router/) | Home Assistant icon, README header and social preview of [ha-synology-srm-router](https://github.com/eizedev/ha-synology-srm-router); same mark as aiosynologysrm |
 | [`lib/brand.py`](lib/brand.py) | shared palette, font outlines, SVG and PNG output |
 | [`fonts/`](fonts/) | DejaVu Sans Mono Bold with its license |
 
@@ -40,6 +41,7 @@ Debian/Ubuntu: `apt install librsvg2-bin`). The scripts declare their own Python
 ```sh
 uv run eizedev/build.py
 uv run aiosynologysrm/build.py
+uv run ha-synology-srm-router/build.py
 ```
 
 ## Using the images in a project
