@@ -33,7 +33,7 @@ HERE = Path(__file__).resolve().parent
 OUT = HERE / "out"
 NAME = "Synology SRM Router"
 SUBTITLE = "for Home Assistant"
-TAGLINE = ("Load, traffic, WAN and device trackers", "of routers and access points, read only")
+TAGLINE = ("Trackers, WAN, DHCP, firewall and USB", "of routers and access points, read only")
 
 
 def header(c: Palette, size: int = 64) -> tuple[str, int, int]:
