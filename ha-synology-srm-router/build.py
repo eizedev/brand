@@ -12,6 +12,7 @@ Run: uv run ha-synology-srm-router/build.py   (writes to ha-synology-srm-router/
 
 from __future__ import annotations
 
+import dataclasses
 import importlib.util
 import sys
 from pathlib import Path
@@ -61,12 +62,34 @@ def social(c: Palette) -> str:
     return body
 
 
+# On white the light palette's pale links would almost vanish; the mark uses a mid grey there.
+ON_WHITE = dataclasses.replace(LIGHT, line="#9aa3b2")
+
+
+def ha_icon(c: Palette, name: str) -> None:
+    """Home Assistant brand icon: the mark alone on transparency, trimmed and square.
+
+    Home Assistant's brand rules prefer transparent, trimmed images and an icon for a white
+    background (icon.png), with dark_icon.png for dark themes.
+    """
+    svg = write_svg(OUT / f"{name}-mark.svg", 400, 400, network(c))
+    big = Image.open(write_png(svg, OUT / f"{name}-full.png", 1024)).convert("RGBA")
+    mark = big.crop(big.getbbox())
+    side = max(mark.size)
+    square = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+    square.paste(mark, ((side - mark.width) // 2, (side - mark.height) // 2))
+    for size, suffix in ((256, ""), (512, "@2x")):
+        square.resize((size, size), Image.LANCZOS).save(OUT / f"{name}{suffix}.png")
+    (OUT / f"{name}-full.png").unlink()
+    svg.unlink()
+
+
 def main() -> None:
     """Write every file and a review sheet."""
-    full = write_svg(OUT / "icon.svg", 400, 400, icon(DARK))
-    # Home Assistant shows brand/icon.png (256 px) and brand/icon@2x.png (512 px).
-    write_png(full, OUT / "icon.png", 256)
-    write_png(full, OUT / "icon@2x.png", 512)
+    write_svg(OUT / "icon.svg", 400, 400, icon(DARK))  # the README's and docs' app icon
+    # Home Assistant shows brand/icon.png and brand/dark_icon.png (256 px, @2x 512 px).
+    ha_icon(ON_WHITE, "icon")
+    ha_icon(DARK, "dark_icon")
     for variant, palette in (("dark", DARK), ("light", LIGHT)):
         body, w, h = header(palette)
         svg = write_svg(OUT / f"header-{variant}.svg", w, h, body)
@@ -75,8 +98,11 @@ def main() -> None:
     write_png(preview, OUT / "social-preview.png", 1280, 640)
 
     sheet = Image.new("RGB", (1360, 900), "#d9dce3")
-    big = Image.open(OUT / "icon@2x.png").resize((300, 300))
-    sheet.paste(big, (40, 40), big)
+    for i, (name, bg) in enumerate((("icon", "#ffffff"), ("dark_icon", DARK.bg))):
+        tile = Image.new("RGB", (300, 300), bg)
+        big = Image.open(OUT / f"{name}@2x.png").resize((260, 260))
+        tile.paste(big, (20, 20), big)
+        sheet.paste(tile, (40 + i * 340, 40))
     for i, variant in enumerate(("dark", "light")):
         img = Image.open(OUT / f"header-{variant}@2x.png")
         img.thumbnail((620, 200))
