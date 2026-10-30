@@ -13,6 +13,8 @@ and the image is rebuilt, never edited by hand.
 | [`eizedev/`](eizedev/) | the personal ❯e_ logo: avatar, icons, marks, wordmarks, social preview, favicons |
 | [`aiosynologysrm/`](aiosynologysrm/) | icon, README header and social preview of [aiosynologysrm](https://github.com/eizedev/aiosynologysrm) |
 | [`ha-synology-srm-router/`](ha-synology-srm-router/) | Home Assistant icon, README header and social preview of [ha-synology-srm-router](https://github.com/eizedev/ha-synology-srm-router); same mark as aiosynologysrm |
+| [`aiosnmpswitch/`](aiosnmpswitch/) | icon, README header and social preview of [aiosnmpswitch](https://github.com/eizedev/aiosnmpswitch) |
+| [`ha-managed-switch/`](ha-managed-switch/) | Home Assistant icon, README header and social preview of [ha-managed-switch](https://github.com/eizedev/ha-managed-switch); same mark as aiosnmpswitch |
 | [`docs-site/`](docs-site/) | design and build of the documentation websites (GitHub Action) |
 | [`lib/brand.py`](lib/brand.py) | shared palette, font outlines, SVG and PNG output |
 | [`fonts/`](fonts/) | DejaVu Sans Mono Bold with its license |
@@ -43,6 +45,8 @@ Debian/Ubuntu: `apt install librsvg2-bin`). The scripts declare their own Python
 uv run eizedev/build.py
 uv run aiosynologysrm/build.py
 uv run ha-synology-srm-router/build.py
+uv run aiosnmpswitch/build.py
+uv run ha-managed-switch/build.py
 ```
 
 ## Documentation websites
