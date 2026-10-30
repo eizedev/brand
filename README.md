@@ -15,6 +15,7 @@ and the image is rebuilt, never edited by hand.
 | [`ha-synology-srm-router/`](ha-synology-srm-router/) | Home Assistant icon, README header and social preview of [ha-synology-srm-router](https://github.com/eizedev/ha-synology-srm-router); same mark as aiosynologysrm |
 | [`aiosnmpswitch/`](aiosnmpswitch/) | icon, README header and social preview of [aiosnmpswitch](https://github.com/eizedev/aiosnmpswitch) |
 | [`ha-managed-switch/`](ha-managed-switch/) | Home Assistant icon, README header and social preview of [ha-managed-switch](https://github.com/eizedev/ha-managed-switch); same mark as aiosnmpswitch |
+| [`managed-switch-card/`](managed-switch-card/) | README header and social preview of [managed-switch-card](https://github.com/eizedev/managed-switch-card); same mark as aiosnmpswitch |
 | [`docs-site/`](docs-site/) | design and build of the documentation websites (GitHub Action) |
 | [`lib/brand.py`](lib/brand.py) | shared palette, font outlines, SVG and PNG output |
 | [`fonts/`](fonts/) | DejaVu Sans Mono Bold with its license |
@@ -47,6 +48,7 @@ uv run aiosynologysrm/build.py
 uv run ha-synology-srm-router/build.py
 uv run aiosnmpswitch/build.py
 uv run ha-managed-switch/build.py
+uv run managed-switch-card/build.py
 ```
 
 ## Documentation websites
