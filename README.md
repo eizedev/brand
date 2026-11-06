@@ -16,6 +16,7 @@ and the image is rebuilt, never edited by hand.
 | [`aiosnmpswitch/`](aiosnmpswitch/) | icon, README header and social preview of [aiosnmpswitch](https://github.com/eizedev/aiosnmpswitch) |
 | [`ha-managed-switch/`](ha-managed-switch/) | Home Assistant icon, README header and social preview of [ha-managed-switch](https://github.com/eizedev/ha-managed-switch); same mark as aiosnmpswitch |
 | [`managed-switch-card/`](managed-switch-card/) | README header and social preview of [managed-switch-card](https://github.com/eizedev/managed-switch-card), archived: the card is part of [ha-managed-switch](https://github.com/eizedev/ha-managed-switch) |
+| [`powershell-universal-components/`](powershell-universal-components/) | icon, README header and social preview of [powershell-universal-components](https://github.com/eizedev/powershell-universal-components) |
 | [`docs-site/`](docs-site/) | design and build of the documentation websites (GitHub Action) |
 | [`lib/brand.py`](lib/brand.py) | shared palette, font outlines, SVG and PNG output |
 | [`fonts/`](fonts/) | DejaVu Sans Mono Bold with its license |
@@ -49,6 +50,7 @@ uv run ha-synology-srm-router/build.py
 uv run aiosnmpswitch/build.py
 uv run ha-managed-switch/build.py
 uv run managed-switch-card/build.py
+uv run powershell-universal-components/build.py
 ```
 
 ## Documentation websites
