@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = ["fonttools>=4.50", "pillow>=10"]
+# dependencies = ["fonttools>=4.50", "pillow>=10", "uharfbuzz>=0.39"]
 # ///
 """Icon, header and social preview of pivotkit.
 
@@ -21,12 +21,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
 
 from PIL import Image  # noqa: E402
 
-from brand import DARK, LIGHT, Palette, text, write_png, write_svg  # noqa: E402
+from brand import DARK, LIGHT, Palette, sans_text, text, write_png, write_svg  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "out"
 NAME = "pivotkit"
-TAGLINE = ("Pivot report builder for the web", "React, web component, PowerShell Universal")
+TAGLINE = (
+    "Pivot reports for the web and the command line",
+    "React · Web component · CLI · Excel export",
+)
 
 
 def table(c: Palette, small: bool = False) -> str:
@@ -94,12 +97,17 @@ def header(c: Palette, size: int = 72) -> tuple[str, int, int]:
 
 
 def social(c: Palette) -> str:
-    """GitHub social preview, 1280x640."""
+    """GitHub social preview, 1280x640.
+
+    The lettering is Inter, the closest bundled match to the system sans-serif the documentation
+    site (pivotkit.eize.dev) shows, with its heading weight and tracking (800, -0.03em).
+    """
     body = f'<rect width="1280" height="640" fill="{c.bg}"/>'
-    body += f'<g transform="translate(130 150) scale(0.85)">{table(c)}</g>'
-    body += text(NAME, 480, 330, 56, c.text)[0]
-    body += text(TAGLINE[0], 484, 400, 30, c.sub)[0]
-    body += text(TAGLINE[1], 484, 444, 30, c.sub)[0]
+    body += f'<g transform="translate(96 190) scale(0.65)">{table(c)}</g>'
+    left = 400
+    body += sans_text(NAME, left, 318, 96, c.text, "extrabold", tracking=-0.03)[0]
+    body += sans_text(TAGLINE[0], left + 4, 390, 34, c.text)[0]
+    body += sans_text(TAGLINE[1], left + 4, 440, 34, c.sub)[0]
     return body
 
 

@@ -20,7 +20,7 @@ and the image is rebuilt, never edited by hand.
 | [`pivotkit/`](pivotkit/) | icon, README header and social preview of [pivotkit](https://github.com/eizedev/pivotkit) |
 | [`docs-site/`](docs-site/) | design and build of the documentation websites (GitHub Action) |
 | [`lib/brand.py`](lib/brand.py) | shared palette, font outlines, SVG and PNG output |
-| [`fonts/`](fonts/) | DejaVu Sans Mono Bold with its license |
+| [`fonts/`](fonts/) | DejaVu Sans Mono Bold and Inter (ExtraBold, Medium) with their licenses |
 
 Each project folder has a `build.py`, an `overview.png` contact sheet to review all variants at a
 glance, and its output files.
@@ -29,7 +29,10 @@ glance, and its output files.
 
 All marks use the [One Dark](https://github.com/joshdick/onedark.vim) palette on dark
 backgrounds and One Light on light ones. Lettering is DejaVu Sans Mono Bold, converted to paths,
-so the SVGs look the same everywhere without the font installed.
+so the SVGs look the same everywhere without the font installed. Where a preview should match its
+documentation site, which shows the system sans-serif, the lettering is [Inter](https://rsms.me/inter/)
+instead, set like the site's headings (ExtraBold, tracking -0.03em); the pivotkit social preview does
+this.
 
 | Role | Dark | Light |
 | --- | --- | --- |
