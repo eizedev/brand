@@ -26,7 +26,7 @@ from brand import DARK, LIGHT, Palette, glyph, text, text_width, write_png, writ
 
 HERE = Path(__file__).resolve().parent
 SVG, PNG, FAV = HERE / "svg", HERE / "png", HERE / "favicon"
-TAGLINE = "Automation, self-hosting & PowerShell"
+TAGLINE = "pivotkit · Home Assistant · Synology · PowerShell"
 
 
 def mark(c: Palette | None, mono: str | None = None, scale: float = 1.0) -> str:
