@@ -26,9 +26,11 @@ from brand import DARK, LIGHT, Palette, sans_text, text, write_png, write_svg  #
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "out"
 NAME = "pivotkit"
-TAGLINE = (
-    "Pivot reports for the web and the command line",
+TAGLINE = "Pivot reports for the web and the command line"
+# What pivotkit ships, one line each in the social preview: the front ends, then the services.
+FEATURES = (
     "React · Web component · CLI · Excel export",
+    "REST API · MCP server · Container image",
 )
 
 
@@ -104,10 +106,12 @@ def social(c: Palette) -> str:
     """
     body = f'<rect width="1280" height="640" fill="{c.bg}"/>'
     body += f'<g transform="translate(96 190) scale(0.65)">{table(c)}</g>'
-    left = 400
-    body += sans_text(NAME, left, 318, 96, c.text, "extrabold", tracking=-0.03)[0]
-    body += sans_text(TAGLINE[0], left + 4, 390, 34, c.text)[0]
-    body += sans_text(TAGLINE[1], left + 4, 440, 34, c.sub)[0]
+    # The text block (name cap height to the last feature line) is centred on the 260 px mark.
+    left, line = 400, 50
+    body += sans_text(NAME, left, 265, 96, c.text, "extrabold", tracking=-0.03)[0]
+    body += sans_text(TAGLINE, left + 4, 337, 34, c.text)[0]
+    for i, feature in enumerate(FEATURES):
+        body += sans_text(feature, left + 4, 387 + i * line, 34, c.sub)[0]
     return body
 
 
